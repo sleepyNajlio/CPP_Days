@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:24:31 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/13 03:19:31 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/13 15:09:20 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,40 @@ void	PhoneBook::add(int index)
 	this->contacts[index % 8].set_DarkestSecret(ds);
 }
 
+void	PhoneBook::display_contact(int i)
+{
+	bool	t_bool = 1;
+	int		n;
+	
+	std::cout << "Enter Selected Index :" << std::endl;
+	while(t_bool)
+	{
+		std::cin >> n;
+		if (std::cin.eof())
+			exit(0);
+		if(std::cin.fail() || n < 0 || n >= i)
+		{
+			std::cout << "wrong index, try again!" << std::endl;
+		}
+		else
+		{
+			std::cout << "Your Selected Contact :" << std::endl;
+			std::cout << "First Name	: " << this->contacts[n].get_field(0) << std::endl;
+			std::cout << "Last Name	: " << this->contacts[n].get_field(1) << std::endl;
+			std::cout << "Nick Name	: " << this->contacts[n].get_field(2) << std::endl;
+			std::cout << "Phone Number	: " << this->contacts[n].get_field(3) << std::endl;
+			std::cout << "Darkest Secret	: " << this->contacts[n].get_field(4) << std::endl;
+			t_bool = 0;
+		}
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	
+	}
+}
+
 void	PhoneBook::search()
 {
 	int i = 0;
-	int n = 0;
 	std::string temp;
-	bool t_bool = 1;
 
 	
 	while (i < 8)
@@ -143,27 +171,6 @@ void	PhoneBook::search()
 	}
 	if (i == 0)
 		return ;
-	std::cout << "Enter Selected Index :" << std::endl;
-	while(t_bool)
-	{
-		std::cin >> n;
-		if (std::cin.eof())
-			exit(0);
-		if(std::cin.fail() || n < 0 || n >= i)
-		{
-			// std::cin.clear();
-			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "wrong index, try again!" << std::endl;
-		}
-		else
-		{
-			std::cout << "Your Selected Contact :" << std::endl;
-			for (int j = 0; j < 5; j++)
-				std::cout << this->contacts[n].get_field(j) << std::endl;
-			t_bool = 0;
-		}
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	
-	}
+	PhoneBook::display_contact(i);
 }
 

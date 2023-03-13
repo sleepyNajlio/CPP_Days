@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 14:59:35 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/13 03:16:24 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/13 14:58:22 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <limits>
 
 class Contact
 {
@@ -40,4 +41,5 @@ class PhoneBook
 		PhoneBook();
 		void add(int index);
 		void search();
+		void display_contact(int i);
 };
