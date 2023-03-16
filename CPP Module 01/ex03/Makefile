@@ -3,26 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+         #
+#    By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 03:45:53 by nloutfi           #+#    #+#              #
-#    Updated: 2023/03/16 01:34:44 by nloutfi          ###   ########.fr        #
+#    Updated: 2023/03/16 05:33:39 by nloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Main
+NAME	= Weapons
 
-SRC		= main.cpp
+SRC		= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 CC		= c++ -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
 $(NAME) : $(SRC)
-	$(CC) $(SRC) -o $(NAME)
+	@$(CC) $(SRC) -o $(NAME)
+	@echo "✅"
 
 clean :
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "❌"
 	
 fclean : clean
 
