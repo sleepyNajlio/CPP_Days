@@ -6,25 +6,23 @@
 #    By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 03:45:53 by nloutfi           #+#    #+#              #
-#    Updated: 2023/03/16 01:37:10 by nloutfi          ###   ########.fr        #
+#    Updated: 2023/03/16 01:34:44 by nloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Zombies
+NAME	= Main
 
-SRC		= main.cpp Zombie.cpp zombieHorde.cpp 
+SRC		= main.cpp
 
 CC		= c++ -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
 $(NAME) : $(SRC)
-	@$(CC) $(SRC) -o $(NAME)
-	@echo "✅"
+	$(CC) $(SRC) -o $(NAME)
 
 clean :
-	@rm -f $(NAME)
-	@echo "❌"
+	rm -f $(NAME)
 	
 fclean : clean
 
