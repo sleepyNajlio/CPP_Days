@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 23:09:03 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/16 00:01:54 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/17 23:42:22 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Zombie::Zombie()
 {
-    std::cout << "default constructor called" << std::endl;
 }
 
 Zombie::Zombie(std::string name)

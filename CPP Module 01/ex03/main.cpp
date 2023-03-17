@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 04:17:05 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/16 05:55:32 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/17 23:52:12 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 int main()
 {
-	// Weapon club = Weapon("crude spiked club");
-	// HumanA bob("Bob", club);
-	// bob.attack();
-	// club.setType("some other type of club");
-	// bob.attack();
-
+	Weapon club1 = Weapon("crude spiked club");
+	HumanA bob("Bob", club1);
+	bob.attack();
+	club1.setType("some other type of club");
+	bob.attack();
+	std::cout << std::endl;
 	Weapon club = Weapon("crude spiked club");
 	HumanB jim("Jim");
 	jim.attack();

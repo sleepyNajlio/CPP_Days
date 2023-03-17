@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 23:03:22 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/15 04:17:07 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/17 23:15:57 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class Zombie
     private:
         std::string name;
     public:
+        Zombie();
         Zombie(std::string name);
         ~Zombie();
         void    announce();

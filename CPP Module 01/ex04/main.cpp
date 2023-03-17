@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 00:23:16 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/17 11:19:07 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/17 23:59:50 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int ac, char **av)
 	std::string line;
 	
 	if (ac != 4)
-		std::cout << "accepted format : ./search_n_replace <filename> <string1> <string2>" << std::endl;
+		std::cout << "Accepted format : ./search_n_replace <filename> <string1> <string2>" << std::endl;
 	else
 	{
 		std::string filename = av[1];
@@ -43,12 +43,12 @@ int main(int ac, char **av)
 		s2 = av[3];
 		if (!ifs.is_open())
 		{
-			std::cout << "could not open infile " << av[1] << std::endl;
+			std::cout << "Could not open infile " << av[1] << std::endl;
 			exit(1);
 		}
 		if (s1.empty())
 		{
-			std::cout << "empty string " << std::endl;
+			std::cout << "First string can't be empty string " << std::endl;
 			exit(1);
 		}
 		while (std::getline(ifs, line))
