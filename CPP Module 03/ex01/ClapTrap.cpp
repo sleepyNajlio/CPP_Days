@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 23:08:47 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/22 01:31:56 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/22 04:48:18 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap(std::string _name)
 {
-    std::cout << "Default Constructor called" << std::endl;
-    this->Name = "RClap";
+    std::cout << "ClapTrap Constructor called" << std::endl;
+    this->Name = _name;
     this->hit_p = 10;
     this->energy_p = 10;
     this->damage = 0;
@@ -23,11 +23,12 @@ ClapTrap::ClapTrap()
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
+    std::cout << "ClapTrap Copy constructor called" << std::endl;
     *this = other;
 }
 
@@ -35,21 +36,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
     if (this != &other)
     {
+        std::cout << "ClapTrap assignment operator called" << std::endl;
         this->Name = other.Name;
         this->hit_p = other.hit_p;
         this->energy_p = other.energy_p;
         this->damage = other.damage;
     }
     return (*this);
-}
-
-ClapTrap::ClapTrap(std::string _name)
-{
-    std::cout << "Name Constructor called" << std::endl;
-    this->Name = _name;
-    this->hit_p = 10;
-    this->energy_p = 10;
-    this->damage = 0;
 }
 
 void    ClapTrap::attack(const std::string &target)
@@ -61,7 +54,7 @@ void    ClapTrap::attack(const std::string &target)
         this->energy_p--;
     }
     else
-        std::cout << "You don't have enough Energy!" << std::endl;
+        std::cout << "ClapTrap: You don't have enough Energy!" << std::endl;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)

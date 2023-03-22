@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+         #
+#    By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 03:45:53 by nloutfi           #+#    #+#              #
-#    Updated: 2023/03/22 01:24:16 by nloutfi          ###   ########.fr        #
+#    Updated: 2023/03/22 04:26:35 by nloutfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= Fixed
 
-SRC		= main.cpp ClapTrap.cpp
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp
 
 CC		= c++ -Wall -Wextra -Werror -std=c++98
 
