@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   scavtrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 03:54:57 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/22 18:45:02 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/22 04:50:44 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
 {
 	std::cout << "ScavTrap Constructor called" << std::endl;
+	this->Name = _name;
 	this->hit_p = 100;;
 	this->energy_p = 50;
 	this->damage = 20;
