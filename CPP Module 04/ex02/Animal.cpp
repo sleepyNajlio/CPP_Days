@@ -1,38 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 05:31:44 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/23 01:42:43 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/23 16:51:46 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "Animal.hpp"
 
-Brain::Brain()
+Animal::Animal()
 {
-	std::cout << "Brain constructor called" << std::endl;
+	std::cout << "Animal constructor called" << std::endl;
+	this->type = "Animal";
 }
 
-Brain::Brain(const Brain &other)
+Animal::Animal(const Animal &other)
 {
 	*this = other;
 }
 
-Brain &Brain::operator=(const Brain &other)
+Animal &Animal::operator=(const Animal &other)
 {
 	if (this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = other.ideas[i];
-	}
-	return *this;
+		this->type = other.type;
+	return (*this);
 }
 
-Brain::~Brain()
+Animal::~Animal()
 {
-	std::cout << "Brain Destructor called" << std::endl;
+	std::cout << "Animal Destructor called" << std::endl;
 }
+
+std::string Animal::getType() const
+{
+	return this->type;
+}
+
+void Animal::setType(std::string _type)
+{
+	this->type = _type;
+}
+

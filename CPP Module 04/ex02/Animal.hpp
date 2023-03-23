@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 05:31:44 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/23 01:36:56 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/23 16:51:36 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#pragma once
+#include <iostream>
 
-Brain::Brain()
+class Animal 
 {
-	std::cout << "Brain constructor called" << std::endl;
-}
-
-Brain::Brain(const Brain &other)
-{
-	*this = other;
-}
-
-Brain &Brain::operator=(const Brain &other)
-{
-	if (this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = other.ideas[i];
-	}
-	return *this;
-}
-
-Brain::~Brain()
-{
-	std::cout << "Brain Destructor called" << std::endl;
-}
+	protected:
+		std::string type;
+	public:
+		Animal();
+		Animal(const Animal &other);
+		Animal &operator=(const Animal &other);
+		virtual ~Animal();
+		std::string getType() const;
+		void setType(std::string _type);
+		virtual void makeSound() const = 0;
+};

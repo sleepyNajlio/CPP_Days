@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 05:31:44 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/23 02:07:54 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/23 06:17:57 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "Dog.hpp"
 
-Brain::Brain()
+Dog::Dog() : Animal()
 {
-	std::cout << "Brain constructor called" << std::endl;
+	std::cout << "Dog constructor Called" << std::endl;
+	this->setType("Dog");
+	this->doggoBrain = new Brain();
 }
 
-Brain::Brain(const Brain &other)
+Dog::Dog(const Dog &other) : Animal(other)
 {
+	std::cout << "Dog copy constructor Called" << std::endl;
 	*this = other;
 }
 
-Brain &Brain::operator=(const Brain &other)
+Dog &Dog::operator=(const Dog &other)
 {
 	if (this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = other.ideas[i];
-	}
+		this->setType("Dog");
 	return *this;
 }
 
-Brain::~Brain()
+Dog::~Dog()
 {
-	std::cout << "Brain Destructor called" << std::endl;
+	delete this->doggoBrain;
+	std::cout << "Dog Destructor called" << std::endl;
+}
+
+void Dog::makeSound() const
+{
+	std::cout << "barf barf" << std::endl;
 }

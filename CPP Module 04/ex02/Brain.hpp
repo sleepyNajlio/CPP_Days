@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 05:31:44 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/23 05:15:46 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/23 05:38:41 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#pragma once
+#include <iostream>
 
-Brain::Brain()
+class Brain
 {
-	std::cout << "Brain constructor called" << std::endl;
-}
-
-Brain::Brain(const Brain &other)
-{
-	*this = other;
-}
-
-Brain &Brain::operator=(const Brain &other)
-{
-	if (this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = other.ideas[i];
-	}
-	return *this;
-}
-
-Brain::~Brain()
-{
-	std::cout << "Brain Destructor called" << std::endl;
-}
+	protected:
+		std::string ideas[100];
+	public:
+		Brain();
+		Brain(const Brain &other);
+		Brain &operator=(const Brain &other);
+		~Brain();	
+};

@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 05:31:44 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/23 01:50:17 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/23 06:08:38 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+#include "Animal.hpp"
 #include "Brain.hpp"
 
-Brain::Brain()
+class Cat : public Animal
 {
-	std::cout << "Brain constructor called" << std::endl;
-}
-
-Brain::Brain(const Brain &other)
-{
-	*this = other;
-}
-
-Brain &Brain::operator=(const Brain &other)
-{
-	if (this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = other.ideas[i];
-	}
-	return *this;
-}
-
-Brain::~Brain()
-{
-	std::cout << "Brain Destructor called" << std::endl;
-}
+	private:
+		Brain *cattoBrain;
+	public:
+		Cat();
+		Cat(const Cat &other);
+		Cat &operator=(const Cat &other);
+		~Cat();
+		void makeSound() const;
+};

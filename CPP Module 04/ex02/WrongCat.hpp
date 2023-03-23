@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 05:31:44 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/23 04:26:47 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/23 04:28:27 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
 
-Brain::Brain()
-{
-	std::cout << "Brain constructor called" << std::endl;
-}
+#pragma once
+#include "WrongAnimal.hpp"
 
-Brain::Brain(const Brain &other)
+class WrongCat : public WrongAnimal
 {
-	*this = other;
-}
-
-Brain &Brain::operator=(const Brain &other)
-{
-	if (this != &other)
-	{
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = other.ideas[i];
-	}
-	return *this;
-}
-
-Brain::~Brain()
-{
-	std::cout << "Brain Destructor called" << std::endl;
-}
+	public:
+		WrongCat();
+		WrongCat(const WrongCat &other);
+		WrongCat &operator=(const WrongCat &other);
+		~WrongCat();
+		void makeSound() const;
+};
