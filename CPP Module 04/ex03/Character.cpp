@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 00:49:34 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/24 07:57:11 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/24 17:59:58 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ Character &Character::operator=(const Character &other)
 {
 	if (this != &other)
 	{
+		// std::cout << "==\n" ;
 		this->name = other.getName();
 		this->invSize= other.invSize;
 		for (int i = 0 ; i < 4 ; i++)
@@ -51,7 +52,10 @@ Character &Character::operator=(const Character &other)
 Character::~Character()
 {
 	for (int i = 0; i < invSize; i++)
-		delete this->Inventory[i];
+	{
+		if (this->Inventory[i])
+			delete this->Inventory[i];
+	}
 }
 
 std::string const &Character::getName() const
@@ -63,7 +67,7 @@ void Character::equip(AMateria *m)
 {
 	if (this->invSize == 4)
 	{
-		delete m;
+		// delete m;
 		return ;
 	}
 	
@@ -77,6 +81,7 @@ void Character::unequip(int idx)
 	{
 		this->Inventory[idx] = NULL;
 	}
+	
 }
 
 void Character::use(int idx, ICharacter &target)

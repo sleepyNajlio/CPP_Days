@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:02:18 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/24 07:42:22 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/24 17:35:30 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void MateriaSource::learnMateria(AMateria *m)
 {
 	if (this->invSize == 4)
 	{
-		delete m;
+		if (m)
+			delete m;
 		return;
 	}
 	if (m)
