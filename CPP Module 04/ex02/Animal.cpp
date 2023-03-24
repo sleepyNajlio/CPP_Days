@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:42:43 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 16:51:46 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/24 06:14:48 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ void Animal::setType(std::string _type)
 {
 	this->type = _type;
 }
-

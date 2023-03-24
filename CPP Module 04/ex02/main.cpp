@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 02:17:05 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/23 17:06:05 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/03/24 06:16:00 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ int main()
 		delete animals[i];
 
 	std::cout << std::endl;
-	
+	Dog leo;
+	std::cout << std::endl;
+	{
+	Dog simba = leo;
+	}
+	std::cout << std::endl;
 	return 0;
 	
 }

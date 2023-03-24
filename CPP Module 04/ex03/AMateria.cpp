@@ -1,28 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 01:36:56 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/03/24 06:13:44 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/03/24 04:56:57 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/03/24 04:58:30 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
+#include "AMateria.hpp"
 
-class Animal 
+AMateria::AMateria(std::string const &type)
 {
-	protected:
-		std::string type;
-	public:
-		Animal();
-		Animal(const Animal &other);
-		Animal &operator=(const Animal &other);
-		virtual ~Animal();
-		std::string getType() const;
-		void setType(std::string _type);
-		virtual void makeSound() const = 0;
-};
+	this->type = type;
+}
+
+AMateria::AMateria(const AMateria &other)
+{
+	*this = other;
+}
+
+AMateria &AMateria::operator=(const AMateria &other)
+{
+	(void) other;
+	return *this;
+}
+
+AMateria::~AMateria()
+{
+}
+
+std::string const &AMateria::getType() const
+{
+	return this->type;
+}
+
+void AMateria::use(ICharacter& target)
+{
+	(void) target;
+}
+
