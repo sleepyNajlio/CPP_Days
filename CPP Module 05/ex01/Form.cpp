@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:16:41 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/06/17 10:00:32 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/06/18 17:54:23 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ void	Form::beSigned(Bureaucrat &b)
 
 std::ostream	&operator<<(std::ostream &out, const Form &form)
 {
-	out << form.getName() << " form, sign grade " << form.getSignGrade() << ", exec grade " << form.getExecGrade() << ", signed: " << form.getSigned();
+	out << "Form " << form.getName() << " is ";
+	if (form.getSigned())
+		out << "signed";
+	else
+		out << "not signed";
+	out << " and requires grade " << form.getSignGrade()<< " to be signed and grade " << form.getExecGrade() << " to be executed" << std::endl;
 	return (out);
 }
