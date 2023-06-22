@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.cpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 22:41:26 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/06/21 23:04:59 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/06/22 23:10:12 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/06/22 23:26:30 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Base.hpp"
 
-
-int main(int ac, char **av)
+int  main()
 {
-	if (ac != 2)
-		return (1);
-	std::string str = av[1];
-	Scalar::convert(str);
+	srand(time(NULL));
+	Base *base = generate();
+	identify(base);
+	identify(*base);
+	delete base;
 	return (0);
 }

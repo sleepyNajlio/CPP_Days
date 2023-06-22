@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 22:51:16 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/06/22 06:59:38 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/06/22 22:21:29 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,12 @@ void	get_char(std::string str)
 
 	try
 	{
-		check_str(str);
+		if (str.size() == 1 && !isdigit(str[0]))
+		{
+			char a = static_cast<char>(str[0]);
+			std::cout<<"char: '"<<a<<"'"<<std::endl;
+			return ;
+		}
 		int c = static_cast<int>(std::stoi(str));
 		if ((c < 32 && c >= 0) || c == 127)
 			std::cout<<"char: Non displayable"<<std::endl;
@@ -95,19 +100,6 @@ void	get_char(std::string str)
 		else
 			std::cout<<"char: impossible"<<std::endl;
 	}
-	
-	int i = 0;
-	if (str[0] == '-' || str[0] == '+')
-		i++;
-	for (; i < (int)str.length(); i++)
-	{
-		if (!isdigit(str[i]) && str[i] != 'f' && str[i] != '.')
-			throw std::exception();
-		else if (str[i] == 'f')
-			break;
-	}
-	if (str[i] == 'f' && str[i+1] != '\0')
-		throw std::exception();
 }
 
 void	get_int(std::string str)
@@ -156,9 +148,10 @@ void	Scalar::convert(std::string str)
 {
 	if (check_pseudo(str))
 		return ;
-	// std::cout.setf(std::ios::fixed);
-	// std::cout.precision(1);
+	std::cout.setf(std::ios::fixed);
+	std::cout.precision(1);
 	get_char(str);
+	
 	get_int(str);
 	get_float(str);
 	get_double(str);
