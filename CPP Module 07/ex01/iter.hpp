@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nloutfi <nloutfi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 23:10:48 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/06/22 23:17:11 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/06/24 01:15:50 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/06/24 01:22:08 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 
+template <typename T>
+void iter(T *array, int length, void (*f)(T const &))
+{
+    for (int i = 0; i < length; i++)
+        f(array[i]);
+}
 
-class Base
+template <typename T>
+void print(T const &x)
 {
-	public:
-		virtual ~Base();
-};
-
-class A : public Base 
-{
-};
-class B : public Base 
-{
-};
-class C : public Base
-{
-};
-
-Base* generate(void);
-void identify(Base* p);	
-void identify(Base& p);
+    std::cout << x << std::endl;
+}
