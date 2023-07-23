@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:21:46 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/07/21 02:46:35 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/07/23 01:52:51 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void check_args(int ac, char **av)
     check_dup(ac, av);
 }
 
+
 // Vector functions
 
 void fill_vector(std::vector<int> &v, int ac, char **av)
@@ -67,10 +68,32 @@ void fill_vector(std::vector<int> &v, int ac, char **av)
     }
 }
 
-void merge_sort(std::vector<int> &v)
+void insert_sort(std::vector<int> &v)
+{
+    int i = 1;
+    while (i < (int)v.size())
+    {
+        int j = i;
+        while (j > 0 && v[j - 1] > v[j])
+        {
+            int temp = v[j];
+            v[j] = v[j - 1];
+            v[j - 1] = temp;
+            j--;
+        }
+        i++;
+    }
+}
+
+void  mergeInsertionSort(std::vector<int> &v)
 {
     if (v.size() <= 1)
         return;
+    if (v.size() <= 10)
+    {
+        insert_sort(v);
+        return;
+    }
     std::vector<int> left;
     std::vector<int> right;
     int middle = (int)v.size() / 2;
@@ -78,8 +101,8 @@ void merge_sort(std::vector<int> &v)
         left.push_back(v[i]);
     for (int i = middle; i < (int)v.size(); i++)
         right.push_back(v[i]);
-    merge_sort(left);
-    merge_sort(right);
+    mergeInsertionSort(left);
+    mergeInsertionSort(right);
     merge(v, left, right);
 }
 
@@ -112,7 +135,7 @@ void fill_list(std::list<int> &l, int ac, char **av)
     }
 }
 
-void merge_sort(std::list<int> &l)
+void  mergeInsertionSort(std::list<int> &l)
 {
     if (l.size() <= 1)
         return;
@@ -131,13 +154,8 @@ void merge_sort(std::list<int> &l)
         right.push_back(l.front());
         l.pop_front();
     }
-    // std::cout << "size: " << l.size() << std::endl;
-    // std::cout << "left: ";
-    // print_container(left);
-    // std::cout << std::endl << "right: ";
-    // print_container(right);
-    merge_sort(left);
-    merge_sort(right);
+    mergeInsertionSort(left);
+    mergeInsertionSort(right);
     merge(l, left, right);
 }
 

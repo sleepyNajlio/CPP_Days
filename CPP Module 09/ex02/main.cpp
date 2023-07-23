@@ -6,7 +6,7 @@
 /*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:42:37 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/07/21 02:46:38 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/07/23 01:53:31 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,16 @@ int main(int ac, char **av)
     std::cout << "Before: ";
     print_container(v);    
     clock_t start = clock();
-    merge_sort(v);
+    mergeInsertionSort(v);
     clock_t end = clock();
     double time_spent_v = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
     
     // list version
     std::list<int> l;
     fill_list(l, ac, av);
-    print_container(l);
     std::cout << std::endl;
     start = clock();
-    merge_sort(l);
-    print_container(l);
+    mergeInsertionSort(l);
     end = clock();
     double time_spent_l = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
     std::cout << "After: ";

@@ -6,11 +6,19 @@
 /*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 04:44:16 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/07/16 08:30:37 by nloutfi          ###   ########.fr       */
+/*   Updated: 2023/07/22 23:05:43 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+int mystoi(std::string str)
+{
+    std::stringstream ss(str);
+    int num;
+    ss >> num;
+    return (num);
+}
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -20,6 +28,7 @@ BitcoinExchange::BitcoinExchange()
 
     if (file.is_open())
     {
+        std::getline(file, key);
         std::string line;
         while (std::getline(file, line))
         {
@@ -53,6 +62,21 @@ BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & other)
     return (*this);
 }
 
+bool check_feb(std::string day, std::string year)
+{
+    if (mystoi(year) % 4 == 0)
+    {
+        if (mystoi(day) > 29 || mystoi(day) < 1)
+            return (false);
+    }
+    else
+    {
+        if (mystoi(day) > 28 || mystoi(day) < 1)
+            return (false);
+    }
+    return (true);
+}
+
 bool check_date(std::string date)
 {
     std::string year, month, day;
@@ -62,21 +86,25 @@ bool check_date(std::string date)
     ss >> day;
     if (year.size() != 4 || month.size() != 2 || day.size() != 2)
         return (false);
-    if (std::stoi(month) > 12 || std::stoi(month) < 1)
+    if (mystoi(year) > 2023 || mystoi(year) < 2009)
         return (false);
-    if (std::stoi(day) > 31 || std::stoi(day) < 1)
+    if (mystoi(month) > 12 || mystoi(month) < 1)
         return (false);
+    if (mystoi(day) > 31 || mystoi(day) < 1)
+        return (false);
+    if (mystoi(month) == 2)
+        return (check_feb(day, year));
+    return (true);
 }
 
 
 
-bool check(std::string date, char delim, float value)
+bool check(std::string date,char delim, float value)
 {
-    if (delim != '|' && !check_date(date))
-    {
-        std::cout << "Error: bad input => " << date << std::endl;
+    if (!check_date(date))
         return (false);
-    }
+    if (delim != '|')
+        return (false);
     if (value < 0)
     {
         std::cout << "Error: not a positive number." << std::endl;
@@ -87,8 +115,7 @@ bool check(std::string date, char delim, float value)
         std::cout << "Error: too large a number." << std::endl;
         return (false);
     }
-    else
-        return (true);
+    return (true);
 }
 
 void get_rate(std::map<std::string, float> &rates, std::string date, float value)
@@ -103,52 +130,77 @@ void get_rate(std::map<std::string, float> &rates, std::string date, float value
     it = rates.find(date);
     if (it != rates.end())
     {
-        std::cout << "Exchange rate for " << date << " is " << it->second * value << std::endl;
+        std::cout << date << " => " << value << " = " << it->second * value << std::endl;
     }
+    //finds the closest (lower) date
     else
     {
-        rates.insert(std::pair<std::string, float>(key, value));
+        it = rates.lower_bound(date);
+        std::cout << date << " => " << value << " = " << (--it)->second * value << std::endl;
     }
+}
+
+bool check_val(float value)
+{
+    if (value < 0)
+    {
+        std::cout << "Error: not a positive number." << std::endl;
+        return (true);
+    }
+    else if (value > 1000)
+    {
+        std::cout << "Error: too large a number." << std::endl;
+        return (true);
+    }
+    return (false);
 }
 
 void   BitcoinExchange::parse_file(std::string file)
 {
     std::ifstream infile(file);
-    std::string line, date, rest;
-    char delim;
-    float value;
-    std::stringstream ss;
+    std::string line;
+
     
     if (!infile.is_open())
     {
         std::cout << "Cannot open file" << std::endl;
         return ;
     }
-    
+    //read first line
     std::getline(infile, line);
     if (line.empty())
     {
         std::cout << "empty file" << std::endl;
         return ;
     }
+    //read rest of file
     while (std::getline(infile, line))
     {
-        ss << line;
+        std::string date, rest;
+        char delim;
+        float value;
+        std::stringstream ss(line);
         
-        ss >> date >> value >> rest;
-        if (!ss.fail() && !rest.empty())
+        ss >> date >> delim >> value;
+        if (ss.fail())
         {
-            if (check(date, delim, value))
-            {
-                get_rate(this->rates, date, value);
-            }
+            std::cout << "Error: bad input => " << line << std::endl;
+            continue ;
         }
+        
+        ss >> rest;
+        if (check_val(value))
+            continue ;
+        if (check(date, delim, value) && rest.empty())
+        {
+            get_rate(this->rates, date, value);
+        }
+        else
+            std::cout << "Error: bad input => " << line << std::endl;
+        
+        
     }
-    
     infile.close();
 }
 
-void BitcoinExchange::exchange(std::ifstream &infile) const
-{
-    
-}
+

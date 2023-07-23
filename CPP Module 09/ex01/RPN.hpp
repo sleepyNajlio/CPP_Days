@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nloutfi <nloutfi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 03:11:30 by nloutfi           #+#    #+#             */
-/*   Updated: 2023/07/16 11:17:14 by nloutfi          ###   ########.fr       */
+/*   Created: 2023/07/17 07:24:37 by nloutfi           #+#    #+#             */
+/*   Updated: 2023/07/21 00:10:48 by nloutfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#pragma once
 
-int main(int ac, char **av)
+#include <iostream>
+#include <string>
+#include <stack>
+#include <cmath>
+#include <sstream>
+
+class RPN 
 {
-    if (ac != 2)
-    {
-        std::cout << av[0] << ": wrong number of arguments" << std::endl;
-        return (1);
-    }
-    std::ifstream infile(av[1]);
-    if (!infile.is_open())
-    {
-        std::cout << av[0] << ": cannot open file" << std::endl;
-        return (1);
-    }
-    BitcoinExchange btc;
-    btc.parse_file(av[1]);
-}
+    private:
+        std::string expression;
+        std::stack<int> stack;
+    public:
+        RPN();
+        RPN(std::string expression);
+        RPN(RPN const &rpn);
+        RPN &operator=(RPN const &rpn);
+        ~RPN();
+        void calculate();
+};
